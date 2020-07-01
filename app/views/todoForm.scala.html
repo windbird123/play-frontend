@@ -1,0 +1,9 @@
+@(todoForm: Form[Todo])(implicit messagesProvider: MessagesProvider)
+
+@helper.form(action = routes.FormController.submitForm) {
+  @helper.checkbox(todoForm("complete"))
+  @helper.inputText(todoForm("name"), '_label -> "todo name")
+  @helper.inputText(todoForm("priority"))
+
+  <button type="submit">OK</button>
+}

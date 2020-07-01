@@ -1,0 +1,60 @@
+@(name: String, isEnable: Boolean = false)
+
+<html>
+  <head>
+    <title>@name</title>
+  </head>
+
+  <body>
+    <p>Hello there, @name.toUpperCase</p>
+
+
+    <label>
+      <input type="checkbox" @if(isEnable) { checked }>
+    </label>
+
+    @if(isEnable) {
+      <p>It's enabled</p>
+    } else {
+      <p>It's disabled</p>
+    }
+
+    <p>@(1 + 1) == @(2) is @(1 + 1 == 2)</p>
+    <p>@List("foo", "bar", "baz")</p>
+    <p>@Some(0).filter(_ == 0)</p>
+
+    <p>The answer is @{
+      val a = 3
+      val b = 4
+      a + b
+    }</p>
+
+    <p>max is @math.max(1, 3)</p>
+
+    <ul>
+    @for(x <- 1 to 3) {
+      <li>Item @x</li>
+    }
+    </ul>
+
+    <p>@println("Hi")</p> @* Unit expressions yield no content *@
+
+    <p>
+    @List(1, 2, 3) match {
+      case Nil => { // 반드시 중괄호가 있어야 한다.
+        <em>empty</em>
+      }
+
+      case a :: b => {
+        <em>list contains @a</em>
+      }
+    }
+    </p>
+
+    @defining(1 + 2 + 3) { sum =>
+      <p>The answer is @sum</p>
+    }
+
+    <a href="@routes.HelloController.hello()">hello</a>
+  </body>
+</html>
