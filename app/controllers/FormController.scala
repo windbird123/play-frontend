@@ -20,13 +20,13 @@ class FormController @Inject() (cc: MessagesControllerComponents)(implicit asset
     )(Todo.apply)(Todo.unapply)
   )
 
-  def createForm: Action[AnyContent] = Action { implicit request =>
+  def createForm(): Action[AnyContent] = Action { implicit request =>
     val populatedForm = todoForm.fill(Todo("windbird", 1, complete = true))
     Ok(views.html.todoForm(populatedForm))
 //    Ok(views.html.todoForm(todoForm))
   }
 
-  def submitForm: Action[AnyContent] = Action { implicit request =>
+  def submitForm(): Action[AnyContent] = Action { implicit request =>
     todoForm
       .bindFromRequest()
       .fold(

@@ -6,7 +6,7 @@ import play.api.mvc.{AbstractController, Action, AnyContent, ControllerComponent
 @Singleton
 class HelloController @Inject() (cc: ControllerComponents)(implicit assetsFinder: AssetsFinder) extends AbstractController(cc) {
 
-  def hello: Action[AnyContent] = Action {
+  def hello(): Action[AnyContent] = Action {
     Ok(views.html.hello("windbird"))
   }
 }
