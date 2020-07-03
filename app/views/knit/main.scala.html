@@ -1,5 +1,4 @@
-@(menu: String)
-@import views.html.knit._
+@(menu: String)(content: Html)
 
 <html lang="ko">
     <head>
@@ -10,9 +9,9 @@
             <!-- Knit CSS -->
         <link rel="stylesheet" href="https://knit.navercorp.com/libs/knit/2.0.0/css/knit.min.css" crossorigin="anonymous">
     </head>
+
+
     <body>
-
-
         <div class="kn-wrap">
             <header class="kn-header bg-primary">
                     <!-- header -->
@@ -48,7 +47,7 @@
                                 <a href="#" class="list-group-item text-reset">대시보드 2</a>
                                 <a href="#" class="list-group-item text-reset">대시보드 3</a>
                             </div>
-                            <a href='@routes.KnitController.show("element")'
+                            <a href='@routes.KnitController.element()'
                             class="list-group-item
 										list-group-item-action
 										clearfix"
@@ -57,42 +56,19 @@
                                 <span class="badge badge-pill badge-primary float-right ml-1">New</span>
                             </a>
 
-                            <a href='@routes.KnitController.show("profile")' class="list-group-item list-group-item-action clearfix">
+                            <a href='@routes.KnitController.profile("Active")' class="list-group-item list-group-item-action clearfix">
                                 <span class="fn fn-user-my1 mr-2"></span>프로필
                                 <span class="badge text-danger float-right ml-1">+999</span>
                             </a>
 
-                            <a href='@routes.KnitController.show("series")' class="list-group-item list-group-item-action">
+                            <a href='@routes.KnitController.series()' class="list-group-item list-group-item-action">
                                 <span class="fn fn-board1 mr-2"></span>시리즈
-                            </a>
-
-                            <a href='@routes.KnitController.show("layout")' class="list-group-item list-group-item-action">
-                                <span class="fn fn-image1 mr-2"></span>레이아웃
                             </a>
                         </div>
                     </aside>
+
                     <div class="kn-content col-sm-10">
-                    @menu match {
-                        case "profile" => {
-                            @profile("Active")
-                        }
-
-                        case "element" => {
-                            @element()
-                        }
-
-                        case "series" => {
-                            @series()
-                        }
-
-                        case "layout" => {
-                            @layout()
-                        }
-
-                        case _ => {
-                            <h1>Hi</h1>
-                        }
-                    }
+                    @content
                     </div>
                 </div>
             </div>

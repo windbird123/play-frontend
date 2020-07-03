@@ -1,23 +1,16 @@
 package controllers
 
 import javax.inject.{Inject, Singleton}
-import play.api.data.Forms._
-import play.api.data._
-import play.api.data.validation._
 import play.api.mvc._
-
-
 @Singleton
 class KnitController @Inject() (cc: MessagesControllerComponents)(implicit assetsFinder: AssetsFinder)
     extends MessagesAbstractController(cc) {
 
-  def default() = show("")
+  def index(): Action[AnyContent] = profile("Active")
 
-  def show(menu: String): Action[AnyContent] = Action { implicit request =>
-    Ok(views.html.knit.main(menu))
-  }
+  def element(): Action[AnyContent] = Action(implicit request => Ok(views.html.knit.element()))
 
-  def profile(section: String): Action[AnyContent] = Action { implicit request =>
-    Ok(views.html.knit.main(section))
-  }
+  def profile(section: String): Action[AnyContent] = Action(implicit request => Ok(views.html.knit.profile(section)))
+
+  def series(): Action[AnyContent] = Action(implicit request => Ok(views.html.knit.series()))
 }

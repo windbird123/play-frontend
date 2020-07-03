@@ -3,13 +3,15 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET        /hello               controllers.HelloController.hello()
-GET        /createForm          controllers.FormController.createForm()
-GET        /submitForm          controllers.FormController.submitForm()
+GET        /hello                        controllers.HelloController.hello()
+GET        /createForm                   controllers.FormController.createForm()
+GET        /submitForm                   controllers.FormController.submitForm()
 
-GET        /knit                controllers.KnitController.default()
-GET        /knit/:menu          controllers.KnitController.show(menu: String)
+GET        /knit                         controllers.KnitController.index()
+GET        /knit/profile/:section        controllers.KnitController.profile(section: String)
+GET        /knit/element                 controllers.KnitController.element()
+GET        /knit/series                  controllers.KnitController.series()
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.versioned(file)
+GET        /assets/*file                 controllers.Assets.versioned(file)
