@@ -17,7 +17,7 @@ lazy val `play-frontend` = project
     commonSettings,
     libraryDependencies ++= commonDependencies ++ Seq(
       guice,
-      dependencies.playBootstrap,
+      dependencies.bootstrap,
       dependencies.scalatestplus % Test
     )
   )
@@ -37,7 +37,7 @@ lazy val dependencies =
     val scalatest      = "org.scalatest"              %% "scalatest"      % "3.0.5"
 
     // project specific dependencies
-    val playBootstrap = "com.adrianhurt"         %% "play-bootstrap"     % "1.6.1-P28-B4"
+    val bootstrap     = "org.webjars"            % "bootstrap"           % "4.5.0"
     val scalatestplus = "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0"
     val scalajHttp    = "org.scalaj"             %% "scalaj-http"        % "2.4.2"
   }

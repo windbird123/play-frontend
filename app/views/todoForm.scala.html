@@ -1,12 +1,26 @@
 @(todoForm: Form[Todo])(implicit messagesProvider: MessagesProvider)
 
+<html>
+    <head>
+        <link href="@routes.Assets.at("stylesheets/bootstrap.min.css")" rel="stylesheet">
+    </head>
 
-@helper.form(action = routes.FormController.submitForm) {
-    @helper.checkbox(todoForm("complete"))
-    @helper.inputText(todoForm("name"), '_label -> "todo name")
-    @helper.inputText(todoForm("priority"))
+    <body>
+        <div class="container">
+            @helper.form(action = routes.FormController.submitForm) {
+                @helper.checkbox(todoForm("complete"))
+                @helper.inputText(todoForm("name"), '_label -> "todo name", 'placeholder -> "sample")
+                @helper.inputText(todoForm("priority"))
+                <button type="submit">Submit</button>
+            }
 
-    <button type="submit">OK</button>
-}
+            <div class="alert alert-primary" role="alert">
+                A simple primary alert—check it out!
+            </div>
+        </div>
+    </body>
 
+    <script src="@routes.Assets.at("javascripts/bootstrap.bundle.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/jquery.min.js")"></script>
+</html>
 
