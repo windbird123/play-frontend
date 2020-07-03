@@ -1,10 +1,10 @@
 package controllers
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.mvc._
 @Singleton
 class KnitController @Inject() (cc: MessagesControllerComponents)(implicit assetsFinder: AssetsFinder)
-    extends MessagesAbstractController(cc) {
+  extends MessagesAbstractController(cc) {
 
   def index(): Action[AnyContent] = profile("Active")
 

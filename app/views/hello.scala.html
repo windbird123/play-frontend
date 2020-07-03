@@ -4,24 +4,22 @@
     <head>
         <title>@name</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
-        <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
-        <script src='@routes.Assets.versioned("javascripts/main.js")' type="text/javascript"></script>
+        <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/main.css")'>
+        <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
+        <script src='@routes.Assets.at("javascripts/main.js")' type="text/javascript"></script>
     </head>
 
     <body>
         <p>Hello there, @name.toUpperCase</p>
 
         <a href="@routes.HelloController.hello()">hello</a>
-
         @* href 에 아래 처럼 하면 안된다 *@
         @* <a href='@views.html.hello("windbird")'>hello</a> *@
-
         <br />
         <br />
 
         <label>
-            <input type="checkbox" @if(isEnable) { checked }>
+            <input type="checkbox" @("checked".when(isEnable))>
         </label>
 
         @if(isEnable) {
@@ -49,7 +47,6 @@
         </ul>
 
         <p>@println("Hi")</p> @* Unit expressions yield no content *@
-
         <p>
         @List(1, 2, 3) match {
             case Nil => { // 반드시 중괄호가 있어야 한다.

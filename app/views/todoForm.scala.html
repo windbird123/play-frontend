@@ -1,17 +1,12 @@
 @(todoForm: Form[Todo])(implicit messagesProvider: MessagesProvider)
-@*
-@helper.form(action = routes.FormController.submitForm) {
-@helper.checkbox(todoForm("complete"))
-@helper.inputText(todoForm("name"), '_label -> "todo name")
-@helper.inputText(todoForm("priority"))
 
-<button type="submit">OK</button>
+
+@helper.form(action = routes.FormController.submitForm) {
+    @helper.checkbox(todoForm("complete"))
+    @helper.inputText(todoForm("name"), '_label -> "todo name")
+    @helper.inputText(todoForm("priority"))
+
+    <button type="submit">OK</button>
 }
-*@
-@b4.vertical.form(action = routes.FormController.submitForm) { implicit vfc =>
-    @b4.checkbox(todoForm("complete"))
-    @b4.text(todoForm("name"), '_label -> "todo name")
-    @b4.text(todoForm("priority"))
-    @b4.submit('class -> "btn btn-default") { Sign in }
-}
+
 

@@ -7,11 +7,12 @@
         <body>
             <ul class="nav nav-tabs flex-nowrap" role="tablist">
                 <li class="nav-item">
-                    <a class='nav-link text-truncate @if(section == "Active") { active }' role="tab" href='@routes.KnitController.profile("Active")'>
+                    <a class='nav-link text-truncate @("active".when(section == "Active"))' role="tab" href='@routes.KnitController.profile("Active")'>
                         Active</a>
                 </li>
                 <li class="nav-item">
-                    <a class='nav-link text-truncate @if(section == "Link") { active }' role="tab" href='@routes.KnitController.profile("Link")'>Link</a>
+                    <a class='nav-link text-truncate @("active".when(section == "Link"))' role="tab" href='@routes.KnitController.profile("Link")'>
+                        Link</a>
                 </li>
             </ul>
 
