@@ -7,11 +7,11 @@
 
     <body>
         <div class="container">
-            @helper.form(action = routes.FormController.submitForm) {
-                @helper.checkbox(todoForm("complete"))
-                @helper.inputText(todoForm("name"), '_label -> "todo name", 'placeholder -> "sample")
-                @helper.inputText(todoForm("priority"))
-                <button type="submit">Submit</button>
+            @b4.horizontal.form(routes.FormController.submitForm(), "col-md-2", "col-md-10") { implicit hfc =>
+                @b4.text(todoForm("name"), '_label -> "todo name", 'placeholder -> "sample")
+                @b4.text(todoForm("priority"), '_label -> "my label")
+                @b4.checkbox(todoForm("complete"), '_text -> "Remember me", 'value -> true)
+                <button type="submit" class="btn btn-primary">Submit</button>
             }
 
             <div class="alert alert-primary" role="alert">
