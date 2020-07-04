@@ -12,6 +12,10 @@ GET        /knit/profile/:section        controllers.KnitController.profile(sect
 GET        /knit/element                 controllers.KnitController.element()
 GET        /knit/series                  controllers.KnitController.series()
 
+GET        /admin                        controllers.AdminController.index()
+GET        /admin/home/:section          controllers.AdminController.home(section: String)
+GET        /admin/dashboard              controllers.AdminController.dashboard()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                 controllers.Assets.at(path="/public", file)
