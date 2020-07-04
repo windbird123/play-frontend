@@ -1,4 +1,4 @@
-@(todoForm: Form[Todo])(implicit messagesProvider: MessagesProvider)
+@(todoForm: Form[Todo])(implicit request: MessagesRequestHeader)
 
 <html>
     <head>
@@ -7,16 +7,18 @@
 
     <body>
         <div class="container">
+            @request.flash.data.map { case (name, value) =>
+            <div class="alert alert-primary" role="alert">
+                @name: @value
+            </div>
+            }
+
             @b4.horizontal.form(routes.FormController.submitForm(), "col-md-2", "col-md-10") { implicit hfc =>
                 @b4.text(todoForm("name"), Symbol("_label") -> "todo name", Symbol("placeholder") -> "sample")
                 @b4.text(todoForm("priority"), Symbol("_label") -> "my label")
                 @b4.checkbox(todoForm("complete"), Symbol("_text") -> "Remember me", Symbol("value") -> true)
                 @b4.submit(Symbol("class") -> "btn btn-primary") { Submit }
             }
-
-            <div class="alert alert-primary" role="alert">
-                A simple primary alert—check it out!
-            </div>
         </div>
     </body>
 

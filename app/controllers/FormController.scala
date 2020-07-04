@@ -1,6 +1,6 @@
 package controllers
 
-import javax.inject.{ Inject, Singleton }
+import javax.inject.{Inject, Singleton}
 import play.api.data.Forms._
 import play.api.data._
 import play.api.data.validation._
@@ -21,14 +21,15 @@ class FormController @Inject() (cc: MessagesControllerComponents)(implicit asset
   def createForm(): Action[AnyContent] = Action { implicit request =>
     val populatedForm = todoForm.fill(Todo("windbird", 1, complete = true))
     Ok(views.html.todoForm(populatedForm))
-    //    Ok(views.html.todoForm(todoForm))
+//        Ok(views.html.todoForm(todoForm))
   }
 
   def submitForm(): Action[AnyContent] = Action { implicit request =>
     todoForm
       .bindFromRequest()
       .fold(
-        (error: Form[Todo]) => BadRequest("BAD"),
-        (form: Todo) => Ok(form.name))
+        (error: Form[Todo]) => BadRequest(views.html.todoForm(error)),
+        (form: Todo) => Redirect(routes.FormController.createForm()).flashing("INFO" -> "Success")
+      )
   }
 }
