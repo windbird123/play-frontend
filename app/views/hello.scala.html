@@ -12,7 +12,10 @@
     </head>
 
     <body>
-        <p>Hello there, @name.toUpperCase</p>
+        @myVar={ @System.currentTimeMillis() }
+        <p id="helloId">Hello there, @name.toUpperCase : @myVar</p>
+
+        <button type="button" onclick="document.getElementById('helloId').textContent = 'Button Clicked'">CLICK</button>
 
         <a href="@routes.HelloController.hello()">hello</a>
         @* href 에 아래 처럼 하면 안된다 *@
